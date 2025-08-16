@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import NoteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 
-const Notes = () => {
+const NOtes = () => {
   const context = useContext(NoteContext);
   const { notes, setNotes } = context;
   return (
@@ -17,4 +17,4 @@ const Notes = () => {
   );
 };
 
-export default Notes;
+export default NOtes;
