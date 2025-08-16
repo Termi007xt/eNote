@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import NoteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 
-const NOtes = () => {
+const NOtes = (props) => {
   const context = useContext(NoteContext);
   const { notes, setNotes } = context;
   return (
@@ -10,7 +10,7 @@ const NOtes = () => {
       <div className="row my-3">
         <h2>Your notes</h2>
         {notes.map((note) => {
-          return <NoteItem note={note} />;
+          return <NoteItem note={note} showAlert={props.showAlert} />;
         })}
       </div>
     </>

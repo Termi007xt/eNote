@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 const NoteItem = (props) => {
+  const note_edit = () => {
+    props.showAlert("Note has been edited", "success");
+  };
+
+  const note_delete = () => {
+    props.showAlert("Note has been deleted", "danger");
+  };
   const { note } = props;
   return (
     <div className="col-md-3">
@@ -10,8 +17,8 @@ const NoteItem = (props) => {
           <h6 className="card-subtitle mb-2 text-body-secondary">{note.tag}</h6>
           <p className="card-text">{note.description}</p>
           <div className="d-flex justify-content-between">
-            <i className="fa-solid fa-pencil"></i>
-            <i className="fa-solid fa-trash-can"></i>
+            <i className="fa-solid fa-pencil" onClick={note_edit}></i>
+            <i className="fa-solid fa-trash-can" onClick={note_delete}></i>
           </div>
         </div>
       </div>

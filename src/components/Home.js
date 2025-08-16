@@ -1,6 +1,6 @@
 import Notes from "./NOtes.js";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <>
       <div className="container my-3">
@@ -26,7 +26,7 @@ const Home = () => {
             rows="3"
           ></textarea>
         </div>
-        <Notes />
+        <Notes showAlert={props.showAlert} />
       </div>
     </>
   );
