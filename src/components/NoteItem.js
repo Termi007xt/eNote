@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import NoteContext from "../context/notes/NoteContext";
 
 const NoteItem = (props) => {
+  const context = useContext(NoteContext);
+  const { deleteNote } = context;
+  const { editNote } = context;
+
   const note_edit = () => {
-    props.showAlert("Note has been edited", "success");
+    props.showAlert("Note has been edited", "warning");
   };
 
   const note_delete = () => {
@@ -18,7 +23,13 @@ const NoteItem = (props) => {
           <p className="card-text">{note.description}</p>
           <div className="d-flex justify-content-between">
             <i className="fa-solid fa-pencil" onClick={note_edit}></i>
-            <i className="fa-solid fa-trash-can" onClick={note_delete}></i>
+            <i
+              className="fa-solid fa-trash-can"
+              onClick={() => {
+                deleteNote(note._id);
+                props.showAlert("Note has been deleted", "danger");
+              }}
+            ></i>
           </div>
         </div>
       </div>
