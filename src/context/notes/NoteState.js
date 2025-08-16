@@ -30,6 +30,15 @@ const NoteState = (props) => {
       date: "2025-08-16T13:34:14.721Z",
       __v: 0,
     },
+    {
+      _id: "68a088d6c12c9556972e0c71",
+      user: "689a2d423d72de0450cfcd8a",
+      title: "More notes",
+      description: "Music collection de Ragnorok",
+      tag: "9realms",
+      date: "2025-08-16T13:34:14.721Z",
+      __v: 0,
+    },
   ];
 
   const [notes, setNotes] = useState(notesInitial);
