@@ -37,6 +37,9 @@ const NOtes = (props) => {
       />
       <div className="row my-3">
         <h2>Your notes</h2>
+        <div className="container">
+          {notes.length === 0 && "No Notes to display"}
+        </div>
         {notes.map((note) => (
           <NoteItem
             key={note._id}
