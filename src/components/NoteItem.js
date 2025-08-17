@@ -10,10 +10,7 @@ const NoteItem = (props) => {
     props.showAlert("Note has been edited", "warning");
   };
 
-  const note_delete = () => {
-    props.showAlert("Note has been deleted", "danger");
-  };
-  const { note } = props;
+  const { note, updateNote } = props;
   return (
     <div className="col-md-3">
       <div className="card">
@@ -22,7 +19,12 @@ const NoteItem = (props) => {
           <h6 className="card-subtitle mb-2 text-body-secondary">{note.tag}</h6>
           <p className="card-text">{note.description}</p>
           <div className="d-flex justify-content-between">
-            <i className="fa-solid fa-pencil" onClick={note_edit}></i>
+            <i
+              className="fa-solid fa-pencil"
+              onClick={() => {
+                updateNote(note);
+              }}
+            ></i>
             <i
               className="fa-solid fa-trash-can"
               onClick={() => {

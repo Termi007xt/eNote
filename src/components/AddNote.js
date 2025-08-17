@@ -3,13 +3,14 @@ import NoteContext from "../context/notes/NoteContext";
 
 const AddNote = (props) => {
   const context = useContext(NoteContext);
-  const { addNote } = context;
+  const { addNote, getNotes } = context;
 
   const [note, setNote] = useState({ title: "", description: "", tag: "" });
 
-  const handle_create = (e) => {
+  const handle_create = async (e) => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
+    await getNotes();
     props.showAlert("Note has been added", "success");
   };
 
