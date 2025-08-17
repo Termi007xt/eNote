@@ -1,7 +1,13 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = (props) => {
+  let navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+    props.showAlert("Logged out Successfully", "success");
+  };
   let location = useLocation();
   return (
     <>
@@ -45,14 +51,24 @@ const Navbar = () => {
                 </Link>
               </li>
             </ul>
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <Link class="btn btn-outline-success" to="/Signup" role="button">
-                Signup
-              </Link>
-              <Link class="btn btn-outline-success" to="/Login" role="button">
-                Login
-              </Link>
-            </div>
+            {!localStorage.getItem("token") ? (
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <Link
+                  class="btn btn-outline-success"
+                  to="/Signup"
+                  role="button"
+                >
+                  Signup
+                </Link>
+                <Link class="btn btn-outline-success" to="/Login" role="button">
+                  Login
+                </Link>
+              </div>
+            ) : (
+              <button class="btn btn-outline-danger" onClick={handleLogout}>
+                Logout
+              </button>
+            )}
           </div>
         </div>
       </nav>
